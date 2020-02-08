@@ -1,5 +1,8 @@
+![Swift 5.1](https://img.shields.io/badge/Swift-5.1-orange.svg)
+![Swift Package Manager](https://img.shields.io/badge/swiftpm-compatible-brightgreen)
+</br>
 
-![](https://img.shields.io/badge/Swift-5.1-orange.svg)
+### [Personal website](https://maxadamyan.github.io)
 
-Personal website
-Built with **Swift** using [Plot](https://github.com/JohnSundell/Plot)
+Built with *Swift* using [Plot](https://github.com/JohnSundell/Plot)  
+Markdown supported using [Ink](https://github.com/JohnSundell/Ink)

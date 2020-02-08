@@ -1,6 +1,7 @@
 import Foundation
 import Files
 import Plot
+import Ink
 import Yams
 
 typealias Node = Plot.Node
@@ -24,6 +25,12 @@ struct CVHTMLGenerator: HTMLGenerator {
         self.contentsFolder = try packageFolder.subfolder(at: contentsFolderPath)
     }
 }
+
+fileprivate var markdownParser: MarkdownParser = {
+    var parser = MarkdownParser()
+    parser.addModifier(MarkdownModifers.linkTargetBlankModifier)
+    return parser
+}()
 
 extension CVHTMLGenerator {
     func generateHTML() -> String {
@@ -249,7 +256,7 @@ extension Node where Context == HTML.BodyContext {
             ),
             .div(
                 .class("summary"),
-                .p(.unwrap(generalData["summary"], { .text($0) }))
+                .p(.unwrap(generalData["summary"], { .raw(markdownParser.html(from: $0)) }))
             )
         )
     }
@@ -274,7 +281,7 @@ extension Node where Context == HTML.BodyContext {
                         ),
                         .div(.class("company"), .unwrap(exp["company"], { .text($0) }))
                     ),
-                    .unwrap(exp["details"], { .div(.class("details"), .p(.raw($0))) })
+                    .unwrap(exp["details"], { .div(.class("details"), .p(.raw(markdownParser.html(from: $0)))) })
                 )
             })
         )
@@ -299,8 +306,7 @@ extension Node where Context == HTML.BodyContext {
                             else: .text($0))
                         )
                     }),
-                    .text(" - "),
-                    .unwrap(project["tagline"], { .span(.class("project-tagline"), .raw($0)) })
+                    .unwrap(project["tagline"], { .span(.class("project-tagline"), .raw(markdownParser.html(from: $0))) })
                 )
             })
         )
@@ -337,7 +343,9 @@ extension Node where Context == HTML.BodyContext {
                 .class("text-center"),
                 .span(
                     .class("copyright"),
-                    .text("Built with Swift using "),
+                    .text("Built with "),
+                    .a(.text("Swift"), .href("https://github.com/MaxAdamyan/maxadamyan.github.io"), .target(.blank)),
+                    .text(" using "),
                     .a(.text("Plot"), .href("https://github.com/JohnSundell/Plot"), .target(.blank))
                 )
             )

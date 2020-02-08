@@ -12,13 +12,14 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/johnsundell/plot.git", from: "0.3.0"),
         .package(url: "https://github.com/JohnSundell/Files", from: "4.0.0"),
+        .package(url: "https://github.com/JohnSundell/Ink", from: "0.4.0"),
         .package(url: "https://github.com/jpsim/Yams.git", from: "2.0.0")
     ],
     
     targets: [
         .target(
             name: "MaxAdamyanWebsite",
-            dependencies: ["Plot", "Yams", "Files"]
+            dependencies: ["Plot", "Ink", "Yams", "Files"]
         )
     ]
 )
