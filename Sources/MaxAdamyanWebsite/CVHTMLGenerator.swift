@@ -26,12 +26,6 @@ struct CVHTMLGenerator: HTMLGenerator {
     }
 }
 
-fileprivate var markdownParser: MarkdownParser = {
-    var parser = MarkdownParser()
-    parser.addModifier(MarkdownModifers.linkTargetBlankModifier)
-    return parser
-}()
-
 extension CVHTMLGenerator {
     func generateHTML() -> String {
         
@@ -256,7 +250,7 @@ extension Node where Context == HTML.BodyContext {
             ),
             .div(
                 .class("summary"),
-                .p(.unwrap(generalData["summary"], { .raw(markdownParser.html(from: $0)) }))
+                .p(.unwrap(generalData["summary"], { .markdown($0) }))
             )
         )
     }
@@ -281,7 +275,7 @@ extension Node where Context == HTML.BodyContext {
                         ),
                         .div(.class("company"), .unwrap(exp["company"], { .text($0) }))
                     ),
-                    .unwrap(exp["details"], { .div(.class("details"), .p(.raw(markdownParser.html(from: $0)))) })
+                    .unwrap(exp["details"], { .div(.class("details"), .p(.markdown($0))) })
                 )
             })
         )
@@ -306,7 +300,7 @@ extension Node where Context == HTML.BodyContext {
                             else: .text($0))
                         )
                     }),
-                    .unwrap(project["tagline"], { .span(.class("project-tagline"), .raw(markdownParser.html(from: $0))) })
+                    .unwrap(project["tagline"], { .span(.class("project-tagline"), .markdown($0)) })
                 )
             })
         )
@@ -343,10 +337,10 @@ extension Node where Context == HTML.BodyContext {
                 .class("text-center"),
                 .span(
                     .class("copyright"),
+                    .raw("Copyright &copy; Adamyan, 2020"),
+                    .raw("</br>"),
                     .text("Built with "),
-                    .a(.text("Swift"), .href("https://github.com/MaxAdamyan/maxadamyan.github.io"), .target(.blank)),
-                    .text(" using "),
-                    .a(.text("Plot"), .href("https://github.com/JohnSundell/Plot"), .target(.blank))
+                    .a(.text("Swift"), .href("https://github.com/MaxAdamyan/maxadamyan.github.io"), .target(.blank))
                 )
             )
         )
