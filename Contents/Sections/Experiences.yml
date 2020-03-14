@@ -1,6 +1,11 @@
 - experience:
+  role: Senior iOS Developer
+  time: Mar 2020 - Present
+  company: Renderforest, Yerevan
+  details: "Senior iOS Develoepr at [Renderforest](https://www.renderforest.com). Working on iOS apps for various products and services of Renderforest"
+- experience:
   role: iOS Team Lead
-  time: Sep 2016 - Present
+  time: Sep 2016 - Mar 2020
   company: gg, Yerevan
   details: "iOS Team Lead at leading ride booking company in Armenia, Russia and US. Responsible for iOS team, and full development lifecycle of two iOS apps: [gg](https://apps.apple.com/app/id852874923) and [ggPartner](https://apps.apple.com/app/id1069360758)"
 - experience:
@@ -10,7 +15,7 @@
   details: "Former iOS Developer, now Technical Advisor at Heuristic Innovations on [SunDay](https://apps.apple.com/app/id1133953409) project. SunDay is a mobile application for efficient Vitamin D synthesis based on user's location and sun metrics (calculated with image using CoreML)"
 - experience:
   role: Bioinformatics Researcher
-  time: Sep 2018 - Present
+  time: Sep 2018 - Aug 2019
   company: National Academy of Sciences of the Republic of Armenia
   details: "Conducting researches in the field of molecular dynamic bioinformatics. Working with GROMACS, VMD, PDB, etc. Doing scientific programming and making optimizations for existing projects. Published papares: [A rippled defective phase of AOT lamella](http://doi.org/10.1016/j.colsurfa.2019.123578), [AOT Bilayer Adsorption on Gold Surfaces](http://doi.org/10.1021/acs.jpcb.8b11471)"
 - experience:
